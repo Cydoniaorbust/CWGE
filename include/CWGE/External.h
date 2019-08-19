@@ -8,17 +8,17 @@
 #include <fstream>
 
 #ifdef _DEBUG
-#include "Glad/GladDeb/glad.h"
+#include <glad/GladDeb/glad.h>
 #else
-#include "Glad/GladRel/glad.h"
+#include <glad/GladRel/glad.h>
 #endif
 
-#include "Glfw/include/GLFW/glfw3.h"
+#include <GLFW/glfw3.h>
 
-#include "Glm/glm.hpp"
-#include "Glm/gtc/matrix_transform.hpp"
-#include "Glm/gtc/type_ptr.hpp"
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
 
-#include "Assimp/Importer.hpp"
-#include "Assimp/scene.h"
-#include "Assimp/postprocess.h"
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
