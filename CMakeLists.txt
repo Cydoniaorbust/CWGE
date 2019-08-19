@@ -19,7 +19,6 @@ target_link_libraries(CWGE opengl32)
 target_link_libraries(CWGE assimp)
 target_link_libraries(CWGE glad)
 target_link_libraries(CWGE glfw)
-target_link_libraries(CWGE glm-static)
 
 target_include_directories(CWGE PUBLIC include/CWGE)
 target_include_directories(CWGE PUBLIC deps/assimp/include)
