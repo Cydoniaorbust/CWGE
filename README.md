@@ -1,1 +1,1 @@
-# EngineLib
+# Copper Wire Game Engine
