@@ -8,9 +8,9 @@
 #include <fstream>
 
 #ifdef _DEBUG
-#include <glad/GladDeb/glad.h>
+#include <glad/glad.h>
 #else
-#include <glad/GladRel/glad.h>
+#include <glad/glad.h>
 #endif
 
 #include <GLFW/glfw3.h>
