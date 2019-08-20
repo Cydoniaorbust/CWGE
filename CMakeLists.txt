@@ -2,9 +2,9 @@ cmake_minimum_required(VERSION 3.0)
 project(CWGE)
 
 add_subdirectory(deps/assimp)
-#add_subdirectory(deps/glad)
+# add_subdirectory(deps/glad)
 add_subdirectory(deps/glfw)
-add_subdirectory(deps/glm)
+# add_subdirectory(deps/glm)
 
 set(SRC 
 	src/Camera.cpp
@@ -23,8 +23,8 @@ target_link_libraries(CWGE glfw)
 target_include_directories(CWGE PUBLIC include/CWGE)
 target_include_directories(CWGE PUBLIC deps/assimp/include)
 
-#target_include_directories(CWGE PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/deps/glad/include)
-#target_include_directories(CWGE PUBLIC deps/glfw/deps)
+# target_include_directories(CWGE PUBLIC ${CMAKE_CURRENT_BINARY_DIR}/deps/glad/include)
+# target_include_directories(CWGE PUBLIC deps/glfw/deps)
 target_include_directories(glad PUBLIC deps/unused/glad/include)
 target_include_directories(CWGE PUBLIC deps/unused/glad/include)
 
