@@ -15,10 +15,10 @@ set(SRC
 add_library(CWGE STATIC ${SRC})
 add_library(glad STATIC deps/unused/glad/src/glad.c)
 find_library(GLFW_LIB glfw3 deps/unused/glfw/lib-vc2017)
-## find_library(ASSIMP_LIB assimp-vc140-mt deps/unused/assimp)
+find_library(ASSIMP_LIB assimp deps/unused/assimp)
 
 target_link_libraries(CWGE opengl32)
-## target_link_libraries(CWGE ${ASSIMP_LIB})
+target_link_libraries(CWGE ${ASSIMP_LIB})
 target_link_libraries(CWGE glad)
 target_link_libraries(CWGE ${GLFW_LIB})
 
