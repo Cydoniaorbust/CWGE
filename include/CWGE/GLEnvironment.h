@@ -62,9 +62,8 @@ private:
 	GLfloat lastX;
 	GLfloat lastY;
 
-	LARGE_INTEGER timeLast;
-	LARGE_INTEGER timeCurrent;
-	LARGE_INTEGER frequency;
+	std::chrono::time_point<std::chrono::high_resolution_clock> timeLast;
+	std::chrono::time_point<std::chrono::high_resolution_clock> timeCurrent;
 
 	Tick tick;
 	Frame frame;
