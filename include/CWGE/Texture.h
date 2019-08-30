@@ -11,10 +11,10 @@ public:
 	void Bind();
 	void Unbind();
 	void Generate(unsigned char*, GLenum, GLuint, GLuint);
-	void LoadFromFile(std::string);
+	void LoadFromFile(const std::string &);
 	
 	Texture();
-	Texture(std::string, std::string);
+	Texture(const std::string &, const std::string &);
 	Texture(const Texture &);
 	Texture(Texture &&);
 	~Texture();
