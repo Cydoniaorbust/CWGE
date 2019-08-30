@@ -19,7 +19,7 @@ void Texture::Generate(unsigned char* data, GLenum format, GLuint width, GLuint 
 	
 	Unbind();
 }
-void Texture::LoadFromFile(std::string path) {
+void Texture::LoadFromFile(const std::string & path) {
 	int width, height, chans;
 	unsigned char *data = stbi_load(path.c_str(), &width, &height, &chans, 0);
 
@@ -36,7 +36,7 @@ void Texture::LoadFromFile(std::string path) {
 }
 
 Texture::Texture() : Id(0), Type(""), Path("") {}
-Texture::Texture(std::string path, std::string type) : Type(type), Path(path) { LoadFromFile(path); }
+Texture::Texture(const std::string & path, const std::string & type) : Type(type), Path(path) { LoadFromFile(path); }
 Texture::Texture(const Texture &t) : Type(t.Type), Path(t.Path) { LoadFromFile(Path); }
 Texture::Texture(Texture &&t) : Type(t.Type), Path(t.Path) { LoadFromFile(Path); t.~Texture(); }
 Texture::~Texture() { glDeleteTextures(1, &Id); }

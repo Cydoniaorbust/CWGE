@@ -35,10 +35,10 @@ public:
 	void DrawOther(GLuint);
 
 	Model();
-	Model(std::string const &);
+	Model(const std::string &);
 private:
-	void loadModel(std::string const &);
+	void loadModel(const std::string &);
 	void processNode(aiNode *, const aiScene *);
 	Mesh processMesh(aiMesh *, const aiScene *);
-	std::vector<Texture> loadTexs(aiMaterial *, aiTextureType, const std::string&);
+	std::vector<Texture> loadTexs(aiMaterial *, aiTextureType, const std::string &);
 };

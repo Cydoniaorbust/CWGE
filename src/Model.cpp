@@ -58,11 +58,11 @@ void Model::DrawOther(GLuint shader) {
 }
 
 Model::Model() {};
-Model::Model(std::string const &path) {
+Model::Model(const std::string & path) {
 	loadModel(path); 
 }
 
-void Model::loadModel(std::string const &path) {
+void Model::loadModel(const std::string & path) {
 	Assimp::Importer importer;
 
 	const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs); // | aiProcess_GenNormals | aiProcess_CalcTangentSpace);
@@ -129,7 +129,7 @@ Mesh Model::processMesh(aiMesh *mesh, const aiScene *scene) {
 
 	return Mesh(vertices, indices, texs);
 }
-std::vector<Texture> Model::loadTexs(aiMaterial *mat, aiTextureType type, const std::string& typeName) {
+std::vector<Texture> Model::loadTexs(aiMaterial *mat, aiTextureType type, const std::string & typeName) {
 	std::vector<Texture> texs;
 
 	for (GLuint i = 0; i < mat->GetTextureCount(type); i++) {
