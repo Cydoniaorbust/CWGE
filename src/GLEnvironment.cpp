@@ -24,7 +24,7 @@ void GLEnvironment::UpdateDelta() {
 	timeLast = timeCurrent;
 
 	timeCurrent = std::chrono::high_resolution_clock::now();
-	delta = std::chrono::duration_cast<std::chrono::microseconds>(timeCurrent - timeLast).count() / 1000.;
+	delta = std::chrono::duration_cast<std::chrono::milliseconds>(timeCurrent - timeLast).count() / 1000.;
 }
 
 void GLEnvironment::InitWin(int _width, int _height, const char* _name) {
