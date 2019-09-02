@@ -86,8 +86,10 @@ void GLEnvironment::Loop(
 
 		while (tick.UpdatesNotTooFast()) {
 			glfwPollEvents();
+			
 			UpdateDelta();
 			__Update();
+			
 			tick.MakeStep(delta);
 		}
 

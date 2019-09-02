@@ -9,7 +9,7 @@ using ms = std::chrono::milliseconds;
 struct Tick {
 	static constexpr GLuint rate = 75; // Per second.
 	const GLuint step = 1000 / rate; // Min N of ticks to "skip" before next update.
-	static constexpr GLuint skip = 5; // Max N of frames before mandatory draw.
+	static constexpr GLuint skip = 5; // Max N of ticks before mandatory draw.
 
 	DWORD last = GetTickCount();
 	GLuint count = 0;
