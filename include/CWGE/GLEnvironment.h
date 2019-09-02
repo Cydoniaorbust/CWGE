@@ -2,12 +2,16 @@
 
 #include "External.h"
 
-struct Tick {
-	static constexpr GLuint rate = 75; // Per second.
-	const GLuint step = 1000 / rate; // Min N of ticks to "skip" before next update.
-	static constexpr GLuint skip = 5; // Max N of frames before mandatory draw.
+using Clock = std::chrono::high_resolution_clock;
+using Date = std::chrono::time_point<Clock>;
+using ms = std::chrono::milliseconds;
 
-	DWORD last = GetTickCount();
+struct Tick {
+	static constexpr GLdouble rate = 75.0; // Per second.
+	const GLdouble step = 1000 / rate; // Min N of ticks to "skip" before next update.
+	static constexpr GLuint skip = 5; // Max N of ticks before mandatory draw.
+
+	GLuint last = Clock::now().time_since_epoch().count() / 1000000;
 	GLuint count = 0;
 	GLfloat time = 0.0f;
 	GLfloat rateCheck = 0.0f;
@@ -17,7 +21,7 @@ struct Tick {
 		time = 0.0f;
 	}
 	bool UpdatesNotTooFast() const {
-		return (GetTickCount() > last) && (count < skip);
+		return (Clock::now().time_since_epoch().count() / 1000000 > last) && (count < skip);
 	}
 	void MakeStep(GLfloat _delta) {
 		last += step;
@@ -62,15 +66,15 @@ private:
 	GLfloat lastX;
 	GLfloat lastY;
 
-	std::chrono::time_point<std::chrono::high_resolution_clock> timeLast;
-	std::chrono::time_point<std::chrono::high_resolution_clock> timeCurrent;
+	Date timeLast;
+	Date timeCurrent;
 
 	Tick tick;
 	Frame frame;
 	
 	GLfloat aspect;
 public:
-	GLfloat delta;
+	GLdouble delta;
 	bool drawHits;
 	
 	GLFWwindow* GetWin() const noexcept;
