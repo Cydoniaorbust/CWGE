@@ -7,8 +7,8 @@ using Date = std::chrono::time_point<Clock>;
 using ms = std::chrono::milliseconds;
 
 struct Tick {
-	static constexpr GLuint rate = 75; // Per second.
-	const GLuint step = 1000 / rate; // Min N of ticks to "skip" before next update.
+	static constexpr GLdouble rate = 75.0; // Per second.
+	const GLdouble step = 1000 / rate; // Min N of ticks to "skip" before next update.
 	static constexpr GLuint skip = 5; // Max N of ticks before mandatory draw.
 
 	DWORD last = GetTickCount();
@@ -74,7 +74,7 @@ private:
 	
 	GLfloat aspect;
 public:
-	GLfloat delta;
+	GLdouble delta;
 	bool drawHits;
 	
 	GLFWwindow* GetWin() const noexcept;
