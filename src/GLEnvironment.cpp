@@ -22,8 +22,8 @@ GLfloat GLEnvironment::CountFPS() {
 
 void GLEnvironment::UpdateDelta() {
 	timeLast = timeCurrent;
+	timeCurrent = Clock::now();
 
-	timeCurrent = std::chrono::high_resolution_clock::now();
 	delta = std::chrono::duration_cast<std::chrono::milliseconds>(timeCurrent - timeLast).count() / 1000.;
 }
 
@@ -115,6 +115,6 @@ GLEnvironment::GLEnvironment() : lastX(0), lastY(0), delta(0.0f), drawHits(false
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
-	timeCurrent = std::chrono::high_resolution_clock::now();
+	timeCurrent = Clock::now();
 }
 GLEnvironment::~GLEnvironment() {}
