@@ -11,7 +11,7 @@ struct Tick {
 	const GLdouble step = 1000 / rate; // Min N of ticks to "skip" before next update.
 	static constexpr GLuint skip = 5; // Max N of ticks before mandatory draw.
 
-	DWORD last = GetTickCount();
+	GLuint last = Clock::now().time_since_epoch().count() / 1000000;
 	GLuint count = 0;
 	GLfloat time = 0.0f;
 	GLfloat rateCheck = 0.0f;
@@ -21,7 +21,7 @@ struct Tick {
 		time = 0.0f;
 	}
 	bool UpdatesNotTooFast() const {
-		return (GetTickCount() > last) && (count < skip);
+		return (Clock::now().time_since_epoch().count() / 1000000 > last) && (count < skip);
 	}
 	void MakeStep(GLfloat _delta) {
 		last += step;
