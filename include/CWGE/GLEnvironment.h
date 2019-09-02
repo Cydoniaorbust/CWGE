@@ -2,6 +2,10 @@
 
 #include "External.h"
 
+using Clock = std::chrono::high_resolution_clock;
+using Date = std::chrono::time_point<Clock>;
+using ms = std::chrono::milliseconds;
+
 struct Tick {
 	static constexpr GLuint rate = 75; // Per second.
 	const GLuint step = 1000 / rate; // Min N of ticks to "skip" before next update.
