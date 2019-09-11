@@ -93,7 +93,6 @@ void GLEnvironment::Loop(
 			tick.MakeStep(delta);
 		}
 
-		//_manager.Draw(cam.position, cam.view, aspect, drawHits);
 		__Draw(position, view, aspect, drawHits);
 		Swap();
 		frame.MakeStep();
