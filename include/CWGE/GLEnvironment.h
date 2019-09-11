@@ -7,11 +7,14 @@ using Date = std::chrono::time_point<Clock>;
 using ms = std::chrono::milliseconds;
 
 struct Tick {
-	static constexpr GLdouble rate = 75.0; // Per second.
-	const GLdouble step = 1000 / rate; // Min N of ticks to "skip" before next update.
-	static constexpr GLuint skip = 5; // Max N of ticks before mandatory draw.
+	// Per second.
+	static constexpr GLuint rate = 75.0;
+	// Min N of ticks to "skip" before next update.
+	Clock::duration step = std::chrono::duration_cast<Clock::duration>(std::chrono::duration<long, std::ratio <1, rate>> {1}); 
+	// Max N of ticks before mandatory draw.
+	static constexpr GLuint skip = 5;
 
-	GLuint last = Clock::now().time_since_epoch().count() / 1000000;
+	Clock::time_point last = Clock::now();
 	GLuint count = 0;
 	GLfloat time = 0.0f;
 	GLfloat rateCheck = 0.0f;
@@ -21,7 +24,7 @@ struct Tick {
 		time = 0.0f;
 	}
 	bool UpdatesNotTooFast() const {
-		return (Clock::now().time_since_epoch().count() / 1000000 > last) && (count < skip);
+		return (Clock::now() > last) && (count < skip);
 	}
 	void MakeStep(GLfloat _delta) {
 		last += step;
@@ -56,7 +59,7 @@ class Error : public std::exception {
 	const char* data;
 public:
 	Error(const char* _data) : data(_data) {};
-	const char* GetData() { return data; };
+	const char* what() const noexcept { return data; };
 };
 
 class GLEnvironment {
